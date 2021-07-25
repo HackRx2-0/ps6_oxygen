@@ -1266,7 +1266,67 @@ function myFunction9() {
           })
           .catch();
           </script>
+    <script id="Mainconfig">
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyADWJZ7r7kor-wFv7awUUFvKy4jwwjWj5w",
+    authDomain: "oxygen-2021.firebaseapp.com",
+    projectId: "oxygen-2021",
+    storageBucket: "oxygen-2021.appspot.com",
+    messagingSenderId: "794691649908",
+    appId: "1:794691649908:web:e82961a182187c877cec21",
+    measurementId: "G-J96XE4RE4H"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+  function writeData() {
+    alert("You have successfully submitted the form"),
+    firebase.database().ref("Contact").set({
+          Name: document.getElementById("Namefield").value,
+          Email: document.getElementById("Emailfield").value,
+          Text: document.getElementById("Textfield").value
+    });
+    document.getElementById("myForm").reset();
+  }
+  function writeData2() {
+    alert("You have successfully submitted the form"),
+    firebase.database().ref("NudgeType").set({
+          NudgeType:document.getElementById("nudgeType").value,
+          NudgeTheme:document.getElementById("nudgeTheme").value,
+          Title:document.getElementById("Title").value,
+          Subtitle:document.getElementById("Subtitle").value,
+          ElementId: document.getElementById("ElementId").value
+    });
     
+    document.getElementById("myForm").reset();
+  }
+</script>
+    
+    <script>
+  function usertap() {
+    var points= document.getElementById("NudgeActionPrompt").value;
+    firebase.database().ref("UsabilityPoints").set({
+      ActionPrompt: points
+    });
+  }
+</script>
+    
+<script>
+fetch('https://oxygen-2021-default-rtdb.firebaseio.com/.json')
+.then((response) => {
+  return response.json();
+})
+.then((data) => {
+    var z= data.UsabilityPoints.ActionPrompt;
+    document.getElementById("points").innerHTML = z;
+
+})
+.catch();
+</script>
+
     
     
       <script>
@@ -1455,66 +1515,6 @@ function myFunction9() {
                         </script>
     
        
- <script id="Mainconfig">
-
-  var firebaseConfig = {
-    apiKey: "AIzaSyADWJZ7r7kor-wFv7awUUFvKy4jwwjWj5w",
-    authDomain: "oxygen-2021.firebaseapp.com",
-    projectId: "oxygen-2021",
-    storageBucket: "oxygen-2021.appspot.com",
-    messagingSenderId: "794691649908",
-    appId: "1:794691649908:web:e82961a182187c877cec21",
-    measurementId: "G-J96XE4RE4H"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
-<script>
-  function writeData() {
-    alert("You have successfully submitted the form"),
-    firebase.database().ref("Contact").set({
-          Name: document.getElementById("Namefield").value,
-          Email: document.getElementById("Emailfield").value,
-          Text: document.getElementById("Textfield").value
-    });
-    document.getElementById("myForm").reset();
-  }
-  function writeData2() {
-    alert("You have successfully submitted the form"),
-    firebase.database().ref("NudgeType").set({
-          NudgeType:document.getElementById("nudgeType").value,
-          NudgeTheme:document.getElementById("nudgeTheme").value,
-          Title:document.getElementById("Title").value,
-          Subtitle:document.getElementById("Subtitle").value,
-          ElementId: document.getElementById("ElementId").value
-    });
-    
-    document.getElementById("myForm").reset();
-  }
-</script>
-    
-    <script>
-  function usertap() {
-    var points= document.getElementById("NudgeActionPrompt").value;
-    firebase.database().ref("UsabilityPoints").set({
-      ActionPrompt: points
-    });
-  }
-</script>
-    
-<script>
-fetch('https://oxygen-2021-default-rtdb.firebaseio.com/.json')
-.then((response) => {
-  return response.json();
-})
-.then((data) => {
-    var z= data.UsabilityPoints.ActionPrompt;
-    document.getElementById("points").innerHTML = z;
-
-})
-.catch();
-</script>
 
   </head>
   <!-- Google Tag Manager (noscript) -->
